@@ -6,6 +6,9 @@ OpenRefine is a power tool that allows you to load data, understand it,
 clean it up, reconcile it, and augment it with data coming from
 the web. All with the comfort and privacy of your own computer.
 
+#Features
+* Add Chinese identity card number facet supported
+
 Download
 -----------------------
 * [Latest Beta 2.6 rc2 - Recommended](https://github.com/OpenRefine/OpenRefine/releases)
