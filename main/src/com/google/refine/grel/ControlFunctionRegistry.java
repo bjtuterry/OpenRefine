@@ -139,6 +139,7 @@ import com.google.refine.grel.controls.ForRange;
 import com.google.refine.grel.controls.If;
 import com.google.refine.grel.controls.IsBlank;
 import com.google.refine.grel.controls.IsError;
+import com.google.refine.grel.controls.IsIDCardNo;
 import com.google.refine.grel.controls.IsNonBlank;
 import com.google.refine.grel.controls.IsNotNull;
 import com.google.refine.grel.controls.IsNull;
@@ -305,5 +306,8 @@ public class ControlFunctionRegistry {
         registerControl("isNonBlank", new IsNonBlank());
         registerControl("isNumeric", new IsNumeric());
         registerControl("isError", new IsError());
+        
+        //custom testing function by terry
+        registerControl("isIDCardNo", new IsIDCardNo());
     }
 }

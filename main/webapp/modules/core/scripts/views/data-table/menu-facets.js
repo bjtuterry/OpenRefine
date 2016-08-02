@@ -23,8 +23,8 @@ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
 A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
 OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
 SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,           
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY           
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
@@ -35,12 +35,12 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
   var doFilterByExpressionPrompt = function(expression, type) {
     DataTableView.promptExpressionOnVisibleRows(
       column,
-      (type == "list" ? $.i18n._('core-views')["custom-facet"] : $.i18n._('core-views')["custom-numeric-label"]) +" "+ column.name, 
+      (type == "list" ? $.i18n._('core-views')["custom-facet"] : $.i18n._('core-views')["custom-numeric-label"]) +" "+ column.name,
       expression,
       function(expression) {
         var config = {
           "name" : column.name,
-          "columnName" : column.name, 
+          "columnName" : column.name,
           "expression" : expression
         };
         if (type == "range") {
@@ -258,6 +258,21 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
                 }
             );
           }
+        },
+        {},
+        {
+          id: "core/idcardno-facet",
+          label: $.i18n._('core-views')["facet-idcardno"],
+          click: function() {
+            ui.browsingEngine.addFacet(
+                "list",
+                {
+                  "name": column.name,
+                  "columnName": column.name,
+                  "expression": "isIDCardNo(value)"
+                }
+            );
+          }
         }
       ]
     }
@@ -268,10 +283,10 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
       label: $.i18n._('core-views')["text-filter"],
       click: function() {
         ui.browsingEngine.addFacet(
-            "text", 
+            "text",
             {
               "name" : column.name,
-              "columnName" : column.name, 
+              "columnName" : column.name,
               "mode" : "text",
               "caseSensitive" : false
             }

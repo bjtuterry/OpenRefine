@@ -504,6 +504,7 @@
 		"unicode-facet": "Unicode char-code facet",
 		"facet-error": "Facet by error",
 		"facet-blank": "Facet by blank",
+		"facet-idcardno": "IDCardNo. facet",
 		"text-filter": "Text filter",
 		"add-col-col": "Add column based on column",
 		"new-col-name": "New column name",
