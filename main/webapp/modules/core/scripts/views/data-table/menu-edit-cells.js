@@ -23,8 +23,8 @@ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
 A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
 OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
 SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,           
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY           
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
@@ -36,8 +36,8 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
     Refine.postCoreProcess(
       "text-transform",
       {
-        columnName: column.name, 
-        expression: expression, 
+        columnName: column.name,
+        expression: expression,
         onError: onError,
         repeat: repeat,
         repeatCount: repeatCount
@@ -54,7 +54,7 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
 
     var elmts = DOM.bind(frame);
     elmts.dialogHeader.text($.i18n._('core-views')["custom-text-trans"]+" " + column.name);
-    
+
     elmts.or_views_errorOn.text($.i18n._('core-views')["on-error"]);
     elmts.or_views_keepOr.text($.i18n._('core-views')["keep-or"]);
     elmts.or_views_setBlank.text($.i18n._('core-views')["set-blank"]);
@@ -62,7 +62,7 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
     elmts.or_views_reTrans.text($.i18n._('core-views')["re-trans"]);
     elmts.or_views_timesChang.text($.i18n._('core-views')["times-chang"]);
     elmts.okButton.html($.i18n._('core-buttons')["ok"]);
-    elmts.cancelButton.text($.i18n._('core-buttons')["cancel"]);    
+    elmts.cancelButton.text($.i18n._('core-buttons')["cancel"]);
 
     var level = DialogSystem.showDialog(frame);
     var dismiss = function() { DialogSystem.dismissUntil(level - 1); };
@@ -97,7 +97,7 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
 
   var doFillDown = function() {
     Refine.postCoreProcess(
-      "fill-down", 
+      "fill-down",
       {
         columnName: column.name
       },
@@ -108,7 +108,7 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
 
   var doBlankDown = function() {
     Refine.postCoreProcess(
-      "blank-down", 
+      "blank-down",
       {
         columnName: column.name
       },
@@ -121,7 +121,7 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
     var separator = window.prompt($.i18n._('core-views')["enter-separator"], ", ");
     if (separator !== null) {
       Refine.postCoreProcess(
-        "join-multi-value-cells", 
+        "join-multi-value-cells",
         {
           columnName: column.name,
           keyColumnName: theProject.columnModel.keyColumnName,
@@ -137,7 +137,7 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
     var separator = window.prompt($.i18n._('core-views')["what-separator"], ",");
     if (separator !== null) {
       Refine.postCoreProcess(
-        "split-multi-value-cells", 
+        "split-multi-value-cells",
         {
           columnName: column.name,
           keyColumnName: theProject.columnModel.keyColumnName,
@@ -213,6 +213,12 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
           id: "core/to-blank",
           label: $.i18n._('core-views')["blank-out"],
           click: function() { doTextTransform("null", "keep-original", false, ""); }
+        },
+        {},
+        {
+          id: "core/to-idcardno-18",
+          label: $.i18n._('core-views')["to-idcarno-18"],
+          click: function() { doTextTransform("value.toIDCardNo18()", "keep-original", false, ""); }
         }
       ]
     },
@@ -251,7 +257,7 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
 
     var elmts = DOM.bind(dialog);
     var level = DialogSystem.showDialog(dialog);
-    
+
     elmts.dialogHeader.html($.i18n._('core-views')["transp-cell"]);
     elmts.or_views_fromCol.html($.i18n._('core-views')["from-col"]);
     elmts.or_views_toCol.html($.i18n._('core-views')["to-col"]);
@@ -269,7 +275,7 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
     elmts.or_views_fillOther.html($.i18n._('core-views')["fill-other"]);
     elmts.okButton.html($.i18n._('core-buttons')["transpose"]);
     elmts.cancelButton.html($.i18n._('core-buttons')["cancel"]);
-    
+
     var dismiss = function() {
       DialogSystem.dismissUntil(level - 1);
     };
@@ -284,7 +290,7 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
         ignoreBlankCells: elmts.ignoreBlankCellsCheckbox[0].checked,
         fillDown: elmts.fillDownCheckbox[0].checked
       };
-      
+
       var mode = dialog.find('input[name="transpose-dialog-column-choices"]:checked')[0].value;
       if (mode == "2") {
         config.keyColumnName = $.trim(elmts.keyColumnNameInput[0].value);
@@ -310,7 +316,7 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
       }
 
       Refine.postCoreProcess(
-          "transpose-columns-into-rows", 
+          "transpose-columns-into-rows",
           config,
           null,
           { modelsChanged: true },
@@ -345,7 +351,7 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
         var column2 = columns[k];
         $('<option>').attr("value", k - j + 1).text(column2.name).appendTo(elmts.toColumnSelect);
       }
-      
+
       $('<option>')
         .attr("value", "-1")
         .attr("selected", "true")
@@ -375,7 +381,7 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
         };
 
         Refine.postCoreProcess(
-          "transpose-rows-into-columns", 
+          "transpose-rows-into-columns",
           config,
           null,
           { modelsChanged: true }
@@ -383,20 +389,20 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
       }
     }
   };
-  
+
   var doKeyValueColumnize = function() {
     var dialog = $(DOM.loadHTML("core", "scripts/views/data-table/key-value-columnize.html"));
 
     var elmts = DOM.bind(dialog);
     var level = DialogSystem.showDialog(dialog);
-    
+
     elmts.dialogHeader.html($.i18n._('core-views')["columnize"]);
     elmts.or_views_keyCol.html($.i18n._('core-views')["key-col"]);
     elmts.or_views_valCol.html($.i18n._('core-views')["val-col"]);
     elmts.or_views_noteCol.html($.i18n._('core-views')["note-col"]);
     elmts.okButton.html($.i18n._('core-buttons')["ok"]);
     elmts.cancelButton.html($.i18n._('core-buttons')["cancel"]);
-    
+
     var dismiss = function() {
       DialogSystem.dismissUntil(level - 1);
     };
@@ -416,7 +422,7 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
         alert($.i18n._('core-views')["sel-col-val"]);
         return;
       }
-      
+
       var noteColumnName = elmts.noteColumnSelect[0].value;
       if (noteColumnName != null) {
         if (noteColumnName == config.keyColumnName ||
@@ -428,7 +434,7 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
       }
 
       Refine.postCoreProcess(
-        "key-value-columnize", 
+        "key-value-columnize",
         config,
         null,
         { modelsChanged: true }
@@ -439,18 +445,18 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
     var valueColumnIndex = -1;
     for (var i = 0; i < columns.length; i++) {
       var column2 = columns[i];
-      
+
       var keyOption = $('<option>').attr("value", column2.name).text(column2.name).appendTo(elmts.keyColumnSelect);
       if (column2.name == column.name) {
         keyOption.attr("selected", "true");
         valueColumnIndex = i + 1;
       }
-      
+
       var valueOption = $('<option>').attr("value", column2.name).text(column2.name).appendTo(elmts.valueColumnSelect);
       if (i === valueColumnIndex) {
         valueOption.attr("selected", "true");
       }
-      
+
       $('<option>').attr("value", column2.name).text(column2.name).appendTo(elmts.noteColumnSelect);
     }
   };

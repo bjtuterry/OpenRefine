@@ -584,6 +584,7 @@
 		"to-date": "To date",
 		"to-text": "To text",
 		"blank-out": "Blank out cells",
+		"to-idcarno-18": "Upgrade ID NO. to 18 digits",
 		"fill-down": "Fill down",
 		"blank-down": "Blank down",
 		"split-cells": "Split multi-valued cells",

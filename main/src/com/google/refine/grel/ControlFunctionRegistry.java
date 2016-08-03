@@ -46,6 +46,7 @@ import com.google.refine.expr.functions.Jsonize;
 import com.google.refine.expr.functions.Length;
 import com.google.refine.expr.functions.Slice;
 import com.google.refine.expr.functions.ToDate;
+import com.google.refine.expr.functions.ToIDCardNo18;
 import com.google.refine.expr.functions.ToNumber;
 import com.google.refine.expr.functions.ToString;
 import com.google.refine.expr.functions.Type;
@@ -307,7 +308,10 @@ public class ControlFunctionRegistry {
         registerControl("isNumeric", new IsNumeric());
         registerControl("isError", new IsError());
         
-        //custom testing function by terry
+        //custom testing control by Terry
         registerControl("isIDCardNo", new IsIDCardNo());
+        
+        //custom function by Terry
+        registerFunction("toIDCardNo18", new ToIDCardNo18());
     }
 }
