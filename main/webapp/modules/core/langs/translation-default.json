@@ -505,6 +505,7 @@
 		"facet-error": "Facet by error",
 		"facet-blank": "Facet by blank",
 		"facet-idcardno": "IDCardNo. facet",
+		"facet-mobileno": "MobileNo. facet",
 		"text-filter": "Text filter",
 		"add-col-col": "Add column based on column",
 		"new-col-name": "New column name",

@@ -65,14 +65,15 @@ public class IsIDCardNo extends IsTest {
         mode = sum % 11;
         return CHECKSUM[mode];
     }
-    
+
     /**
      * 未做参数检查，自行确保合法性
-     * @param id can not be null.
+     * 
+     * @param id
+     *            can not be null.
      * @return
      */
-    public static boolean isValidIDCardNo_15(String id)
-    {
+    public static boolean isValidIDCardNo_15(String id) {
         return IDNO_15.matcher(id).find();
     }
 
@@ -86,9 +87,9 @@ public class IsIDCardNo extends IsTest {
         if (id == null) {
             return false;
         }
-        
+
         boolean valid = false;
-        //check 18 digits
+        // check 18 digits
         Matcher m = IDNO_18.matcher(id);
         if (m.find()) {
             char lastChar = Character.toUpperCase(id.charAt(17));
@@ -97,14 +98,13 @@ public class IsIDCardNo extends IsTest {
             valid = (lastChar == checksum);
             // logger.info(lastChar +"\t" + checksum + "\t" + valid);
         }
-        
-        //check 15 digits
-        if(!valid)
-        {
+
+        // check 15 digits
+        if (!valid) {
             m = IDNO_15.matcher(id);
-            valid = m.find();              
+            valid = m.find();
         }
-        
+
         return valid;
     }
 
@@ -116,12 +116,8 @@ public class IsIDCardNo extends IsTest {
     @Override
     protected boolean test(Object o) {
         if (o == null) return false;
-        if (o instanceof String) {
-            String id = (String) o;
-            return isValid(id);
-        } else {
-            return false;
-        }
+        String id = o instanceof String ? (String) o : o.toString();
+        return isValid(id);
 
     }
 }

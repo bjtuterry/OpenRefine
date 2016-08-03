@@ -273,6 +273,20 @@ DataTableColumnHeaderUI.extendMenu(function(column, columnHeaderUI, menu) {
                 }
             );
           }
+        },
+        {
+          id: "core/mobileno-facet",
+          label: $.i18n._('core-views')["facet-mobileno"],
+          click: function() {
+            ui.browsingEngine.addFacet(
+                "list",
+                {
+                  "name": column.name,
+                  "columnName": column.name,
+                  "expression": "isMobileNo(value)"
+                }
+            );
+          }
         }
       ]
     }

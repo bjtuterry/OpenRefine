@@ -141,6 +141,7 @@ import com.google.refine.grel.controls.If;
 import com.google.refine.grel.controls.IsBlank;
 import com.google.refine.grel.controls.IsError;
 import com.google.refine.grel.controls.IsIDCardNo;
+import com.google.refine.grel.controls.IsMobileNo;
 import com.google.refine.grel.controls.IsNonBlank;
 import com.google.refine.grel.controls.IsNotNull;
 import com.google.refine.grel.controls.IsNull;
@@ -310,6 +311,7 @@ public class ControlFunctionRegistry {
         
         //custom testing control by Terry
         registerControl("isIDCardNo", new IsIDCardNo());
+        registerControl("isMobileNo", new IsMobileNo());
         
         //custom function by Terry
         registerFunction("toIDCardNo18", new ToIDCardNo18());

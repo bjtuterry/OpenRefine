@@ -8,6 +8,8 @@ the web. All with the comfort and privacy of your own computer.
 
 #Features
 * Add Chinese identity card number facet supported
+* Add Chinese identity card number transform function from 15-digits to 18 digits
+* Add Chinese mobile phone number facet supported
 
 Download
 -----------------------
